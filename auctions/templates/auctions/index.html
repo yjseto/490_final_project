@@ -1,0 +1,61 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    <div class="container py-3">
+        <h2>Active Listings</h2>
+        {% for auction in auctions %}
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-title orange" onclick="toggleAccordian(this)">{{ auction.title }}</div>
+                <div class="accordion-content" style="display: none;">
+                    <div class="row">
+                        <div class="col py-3">
+                            <a href="{% url 'listing' auction.id %}">
+                            <img src="{{ auction.imageURL }}" alt="auction.title"> 
+                            </a>
+                        </div>
+                        
+                        <div class="col py-3">
+                            <a href="{% url 'listing' auction.id %}">
+                                <h3 class="auction-title">{{ auction.title }}</h3>
+                            </a>
+                            <div>
+                                <!-- Watchlist Icon -->
+                                {% if auction in user.watchlist.auctions.all %}
+                                    <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                                {% else %}
+                                    <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart-broken watchlist-icon" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+                                {% endif %}
+                            </div>
+                            <div>Description:</div>
+                            <div><p>{{ auction.description }}</p></div>
+                            <div>Category:</div>
+                            <div><p>{{ auction.category }}</p></div>
+                            <div><strong style="font-size: 25px">Current price:</strong></div>
+                            <div><strong style="font-size: 25px"><p>US $ {{ auction.current_bid }}</p></strong></div>
+                            <div>Created on:</div>
+                            <div><p>{{ auction.creation_date }}</p></div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div> 
+        {% endfor %}
+    </div>
+    
+    <script>
+        function toggleAccordian(element) {
+            const content = element.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+    </script>
+
+    <script src="{% static 'auctions/watchlist.js' %}"></script>
+    
+{% endblock %}

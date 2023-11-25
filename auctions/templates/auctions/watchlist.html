@@ -1,0 +1,63 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="container">
+    <h2>My Watchlist</h2>
+
+    {% if watchlist %}
+    <div><p>Your watchlist has {{ watchingNum }} items.</p></div>
+
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Auction listing ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Current Price</th>
+            <th scope="col">Starting Bid</th>
+            <th scope="col">Status</th>
+            <th scope="col">Watchlist</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for auction in auctions %}
+        
+          <tr class="dark">
+            <td scope="row">{{ forloop.counter }}</th>
+            <td>{{ auction.id }}</td>
+            <td><a href="{% url 'listing' auction.id %}" style="color: inherit;">{{ auction.title }}</a></td>
+            <td>{{ auction.current_bid }}</td>
+            <td>{{ auction.starting_bid }}</td>
+            <td>
+                {% if auction.closed %}
+                    Closed
+                {% else %}
+                    Active
+                {% endif %}
+            </td>
+            <td>
+              <!-- Watchlist Icon -->
+              {% if auction in user.watchlist.auctions.all %}
+                  <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart watchlist-icon in-watchlist" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+              {% else %}
+                  <i id="watchlist-icon-{{ auction.id }}" class="fas fa-heart-broken watchlist-icon" onclick="toggleWatchlist(this)" data-auction-id="{{ auction.id }}" style="color: red;"></i>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+      {% else %}
+
+      <p>No items in your watchlist.</p>
+
+      {% endif %}
+      
+</div>
+
+<script src="{% static 'auctions/watchlist.js' %}"></script>
+    
+{% endblock %}

@@ -1,0 +1,139 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 18px;
+}
+
+body > header { 
+  padding: 0 0.5rem .75rem 0.5rem;
+}
+
+body {
+  grid-template-columns: 10% 80% 10%;
+  margin: 10px;
+  padding: 10px;
+}
+
+.form-control {
+  width: 70%;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.col {
+  flex: 1;
+  padding: 15px;
+}
+
+.col img{
+  width: 40%; 
+  min-width: 330px; 
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+.button_group{
+ padding-left: 0;
+ max-width: 1920px
+}
+
+.comment_block{
+  width: 90%;
+}
+
+.comment_display{
+  width: 90%;
+}
+
+.listing_divider{
+  max-width: 1150px;
+}
+
+.dark {
+  background-color: rgb(59, 59, 59);
+  color: white;
+}
+
+.dark:hover {
+  background-color: rgb(69, 69, 69);
+  color: white;
+}
+
+.categories {
+  background-color: rgb(54, 54, 54);
+  color: orange;
+}
+
+.categories:hover {
+  background-color: rgb(69, 69, 69);
+  color: darkorange;
+}
+
+.watchlist-icon {
+  color: rgb(65, 112, 255);
+  font-size: 24px;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.watchlist-icon.in-watchlist {
+  color: white;
+  cursor:pointer;
+}
+
+.watchlist-icon-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  justify-content: space-between;
+}
+
+.auction-title {
+  margin-right: 10px;
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 600px) {
+  .auction-title {
+      font-size: 14px;
+      max-width: 50%;
+  }
+}
+
+.accordion-item {
+  background-color: rgb(40, 40, 40);
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: solid;
+  outline-color: rgb(69, 67, 67);
+  transition: 0.4s;
+}
+
+.active, .accordion-item:hover {
+  background-color: black;
+}
+
+.accordion-title {
+  color: orange;
+}
+
+.accordion-content {
+  background-color: black;
+  cursor: auto;
+}
