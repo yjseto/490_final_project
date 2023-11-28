@@ -4,9 +4,9 @@ nav {
   padding: 14px 18px;
 }
 
-body > header { 
+/* body > header { 
   padding: 0 0.5rem .75rem 0.5rem;
-}
+} */
 
 body {
   grid-template-columns: 10% 80% 10%;
@@ -136,4 +136,11 @@ body {
 .accordion-content {
   background-color: black;
   cursor: auto;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
 }

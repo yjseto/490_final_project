@@ -12,9 +12,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def index(request):
-    return render(request, "auctions/index.html", {
-        "auctions": Auction.objects.filter(closed=False).order_by('-creation_date')
-    })
+    return render(request, "auctions/index.html")
 
 
 def login_view(request):
